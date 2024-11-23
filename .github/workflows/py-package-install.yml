@@ -13,14 +13,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Debugging Step: List available artifacts
-      - name: List available artifacts
-        run: |
-          curl -X GET -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts"
-
       - name: Download artifact (awesome-calculator)
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v4                  # Using v4 because v3 and prior doesn't support sharing artifacts among workflows.
         with:
           name: awesome-calculator
           run-id: ${{ github.event.workflow_run.id }}
@@ -28,5 +22,5 @@ jobs:
 
       - name: Install Python package from .whl file
         run: |
-          cd /home/runner/work/awesomecalculator_Software_Quality_3_Assignment_4/awesomecalculator_Software_Quality_3_Assignment_4
+          cd /home/runner/work/awesomecalculator_Software_Quality_3_Assignment_4/awesomecalculator_Software_Quality_3_Assignment_4      # Path of where the artifact is downloaded.
           pip install *.whl       # Install the .whl file from the downloaded artifact
