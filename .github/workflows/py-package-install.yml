@@ -13,6 +13,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      # Debugging Step: List available artifacts
+      - name: List available artifacts
+        run: |
+          curl -X GET -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts"
+
+      # Wait for the first workflow to finish and ensure the artifact is uploaded
+      - name: Sleep for 30 seconds (wait for artifact upload)
+        run: sleep 30
+
       - name: Download artifact (awesome-calculator)
         uses: actions/download-artifact@v3
         with:
