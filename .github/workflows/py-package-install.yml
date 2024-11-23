@@ -19,10 +19,6 @@ jobs:
           curl -X GET -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
             "https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts"
 
-      # Wait for the first workflow to finish and ensure the artifact is uploaded
-      - name: Sleep for 30 seconds (wait for artifact upload)
-        run: sleep 30
-
       - name: Download artifact (awesome-calculator)
         uses: actions/download-artifact@v4
         with:
@@ -32,6 +28,7 @@ jobs:
 
       - name: Unzip the artifact
         run: |
+          ls /home/runner/work/awesomecalculator_Software_Quality_3_Assignment_4/awesomecalculator_Software_Quality_3_Assignment_4
           unzip /home/runner/work/awesomecalculator_Software_Quality_3_Assignment_4/awesomecalculator_Software_Quality_3_Assignment_4/awesome-calculator.zip -d /tmp/awesome-calculator
           ls /tmp/awesome-calculator
 
