@@ -30,10 +30,6 @@ jobs:
           run-id: ${{ github.event.workflow_run.id }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: unzip the artifact
-        run: |
-          unzip /tmp/awesome-calculator/awesome-calculator.zip -d /tmp/awesome-calculator         # Extract the zip file.
-
       - name: Install Python package from .whl file
         run: |
           cd /tmp/awesome-calculator/src/dist
