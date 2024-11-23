@@ -13,13 +13,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Download artifact (awesome calculator)
+      - name: Download artifact (awesome-calculator)
         uses: actions/download-artifact@v3
         with:
           name: awesome-calculator
-          path: /tmp/awesomecalculator_Software_Quality_3_Assignment_4
+          path: /tmp/awesome-calculator
 
       - name: Install Python package from .whl file
         run: |
-          cd /tmp/awesomecalculator_Software_Quality_3_Assignment_4/src/dist
+          cd /tmp/awesome-calculator/src/dist
           pip install *.whl       # Install the .whl file from the downloaded artifact
