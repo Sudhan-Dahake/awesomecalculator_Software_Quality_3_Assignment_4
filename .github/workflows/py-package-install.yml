@@ -13,12 +13,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Debugging Step: List available artifacts
-      - name: List available artifacts
-        run: |
-          curl -X GET -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts"
-
       - name: Download artifact (awesome-calculator)
         uses: actions/download-artifact@v4
         with:
