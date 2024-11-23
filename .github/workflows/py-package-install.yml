@@ -19,6 +19,10 @@ jobs:
           name: awesome-calculator
           path: /tmp/awesome-calculator
 
+      - name: unzip the artifact
+        run: |
+          unzip /tmp/awesome-calculator/awesome-calculator.zip -d /tmp/awesome-calculator         # Extract the zip file.
+
       - name: Install Python package from .whl file
         run: |
           cd /tmp/awesome-calculator/src/dist
